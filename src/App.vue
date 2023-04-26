@@ -1,7 +1,5 @@
 <template>
-  <Main></Main>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
-
-<script setup>
-import Main from "./components/Main.vue";
-</script>

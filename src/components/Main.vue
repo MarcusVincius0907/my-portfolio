@@ -1,59 +1,5 @@
 <template>
-  <header class="header">
-    <div class="header__content">
-      <div class="header__logo-container">
-        <div class="header__logo-img-cont">
-          <img
-            src="../assets/user.png"
-            alt="Ram Maheshwari Logo Image"
-            class="header__logo-img"
-          />
-        </div>
-        <span class="header__logo-sub">Marcus</span>
-      </div>
-      <div class="header__main">
-        <ul class="header__links">
-          <li class="header__link-wrapper">
-            <a
-              v-for="(section, i) of sections"
-              :key="i"
-              @click="scrollToElement(section.name)"
-              class="header__link"
-            >
-              {{ section.text }}
-            </a>
-          </li>
-        </ul>
-        <div class="header__main-ham-menu-cont">
-          <img
-            src="../assets/svg/ham-menu.svg"
-            alt="hamburger menu"
-            class="header__main-ham-menu"
-          />
-          <img
-            src="../assets/svg/ham-menu-close.svg"
-            alt="hamburger menu close"
-            class="header__main-ham-menu-close d-none"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="header__sm-menu">
-      <div class="header__sm-menu-content">
-        <ul class="header__sm-menu-links">
-          <li class="header__sm-menu-link">
-            <a
-              v-for="(section, i) of sections"
-              :key="i"
-              @click="scrollToElement(section.name)"
-            >
-              {{ section.text }}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
+  <Header></Header>
   <section class="home-hero" name="home">
     <div class="home-hero__content">
       <h1 class="heading-primary">Hey, My name is Marcus</h1>
@@ -158,9 +104,18 @@
       </h2>
 
       <div class="projects__content">
-        <div class="projects__row">
+        <div v-for="(project, i) in projects" :key="i" class="projects__row">
           <div class="projects__row-img-cont">
             <img
+              v-if="project.thumb"
+              :src="project.thumb"
+              alt="Software Screenshot"
+              class="projects__row-img"
+              loading="lazy"
+            />
+
+            <img
+              v-else
               src="../assets/jpeg/project-mockup-example.jpeg"
               alt="Software Screenshot"
               class="projects__row-img"
@@ -168,55 +123,14 @@
             />
           </div>
           <div class="projects__row-content">
-            <h3 class="projects__row-content-title">Project 1</h3>
+            <h3 class="projects__row-content-title">{{ project.title }}</h3>
             <p class="projects__row-content-desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-              facilis tempora, explicabo quae quod deserunt eius sapiente
-              praesentium.
+              {{ project.description }}
             </p>
-            <a class="btn btn--med btn--theme dynamicBgClr" target="_blank"
-              >Case Study</a
-            >
-          </div>
-        </div>
-        <div class="projects__row">
-          <div class="projects__row-img-cont">
-            <img
-              src="../assets/jpeg/project-mockup-example.jpeg"
-              alt="Software Screenshot"
-              class="projects__row-img"
-              loading="lazy"
-            />
-          </div>
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title">Project 2</h3>
-            <p class="projects__row-content-desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-              facilis tempora, explicabo quae quod deserunt eius sapiente
-              praesentium.
-            </p>
-            <a class="btn btn--med btn--theme dynamicBgClr" target="_blank"
-              >Case Study</a
-            >
-          </div>
-        </div>
-        <div class="projects__row">
-          <div class="projects__row-img-cont">
-            <img
-              src="../assets/jpeg/project-mockup-example.jpeg"
-              alt="Software Screenshot"
-              class="projects__row-img"
-              loading="lazy"
-            />
-          </div>
-          <div class="projects__row-content">
-            <h3 class="projects__row-content-title">Project 3</h3>
-            <p class="projects__row-content-desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-              facilis tempora, explicabo quae quod deserunt eius sapiente
-              praesentium.
-            </p>
-            <a class="btn btn--med btn--theme dynamicBgClr" target="_blank"
+            <a
+              @click="goToProject(project)"
+              class="btn btn--med btn--theme dynamicBgClr"
+              target="_blank"
               >Case Study</a
             >
           </div>
@@ -277,43 +191,27 @@
       </div>
     </div>
   </section>
-  <footer class="main-footer">
-    <div class="main-container">
-      <div class="main-footer__upper">
-        <div class="main-footer__row main-footer__row-1">
-          <h2 class="heading heading-sm main-footer__heading-sm">
-            <span>Social</span>
-          </h2>
-          <div class="main-footer__social-cont">
-            <div
-              v-for="(social, i) of socials"
-              :key="i"
-              @click="goToLink(social.link, social.isEmail)"
-              class="main-footer__icon"
-            >
-              <i :class="[social.icon]"></i>
-            </div>
-          </div>
-        </div>
-        <div class="main-footer__row main-footer__row-2">
-          <h4 class="heading heading-sm text-lt">Marcus</h4>
-          <p class="main-footer__short-desc">
-            Thank you for visiting my portfolio. Follow me on social medias to
-            stay updated on my latest projects and insights.
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <Footer :socials="socials" :goToLink="goToLink"> </Footer>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+import Header from "./Header.vue";
+import Footer from "./Footer.vue";
 export default {
+  name: "main",
+  components: {
+    Header,
+    Footer,
+  },
   setup() {
+    const router = useRouter();
+
     const skills = [
       "Angular",
       "Vue.js",
       "React.js",
+      "Typescript",
       "SASS",
       "BEM",
       "Tailwindcss",
@@ -325,6 +223,11 @@ export default {
       "MongoDB",
       "Docker",
       ".NET",
+      "SQL Server",
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "AWS",
     ];
 
     const socials = [
@@ -347,11 +250,51 @@ export default {
       },
     ];
 
-    const sections = [
-      { name: "home", text: "HOME" },
-      { name: "about", text: "ABOUT" },
-      { name: "projects", text: "PROJECTS" },
-      { name: "contact", text: "CONTACT" },
+    const projects = [
+      {
+        id: 0,
+        title: "Caroci Academy",
+        description: "A Health LMS plaftform delevop with Laravel",
+        path: "caroci",
+        thumb: "",
+      },
+      {
+        id: 1,
+        title: "Pixel",
+        description:
+          "A sortition platform & API. Build with Vue.js and Express",
+        path: "pixel",
+        thumb: "",
+      },
+      {
+        id: 2,
+        title: "Imagem e Ação",
+        description:
+          "A Simple Charades Game to play with friends. Build with React and Express",
+        path: "charades",
+        thumb: "",
+      },
+      {
+        id: 3,
+        title: "Brisa",
+        description: "Professional experience sum",
+        path: "brisa",
+        thumb: "",
+      },
+      {
+        id: 4,
+        title: "Solutis",
+        description: "Professional experience sum",
+        path: "solutis",
+        thumb: "",
+      },
+      {
+        id: 5,
+        title: "Netcracker",
+        description: "Professional experience sum",
+        path: "netcrecker",
+        thumb: "",
+      },
     ];
 
     const goToLink = (link, isEmail = false) => {
@@ -364,63 +307,17 @@ export default {
       window.open(link, "_blank");
     };
 
-    const scrollToElement = (name) => {
-      let anchor = document.getElementsByName(name)[0];
-      anchor.scrollIntoView({ behavior: "smooth" });
+    const goToProject = (project) => {
+      router.push({ name: "project" });
     };
 
     return {
       skills,
       socials,
-      sections,
+      projects,
       goToLink,
-      scrollToElement,
+      goToProject,
     };
-  },
-
-  mounted() {
-    // ---
-    const hamMenuBtn = document.querySelector(".header__main-ham-menu-cont");
-    const smallMenu = document.querySelector(".header__sm-menu");
-    const headerHamMenuBtn = document.querySelector(".header__main-ham-menu");
-    const headerHamMenuCloseBtn = document.querySelector(
-      ".header__main-ham-menu-close"
-    );
-    const headerSmallMenuLinks = document.querySelectorAll(
-      ".header__sm-menu-link"
-    );
-
-    hamMenuBtn.addEventListener("click", () => {
-      if (smallMenu.classList.contains("header__sm-menu--active")) {
-        smallMenu.classList.remove("header__sm-menu--active");
-      } else {
-        smallMenu.classList.add("header__sm-menu--active");
-      }
-      if (headerHamMenuBtn.classList.contains("d-none")) {
-        headerHamMenuBtn.classList.remove("d-none");
-        headerHamMenuCloseBtn.classList.add("d-none");
-      } else {
-        headerHamMenuBtn.classList.add("d-none");
-        headerHamMenuCloseBtn.classList.remove("d-none");
-      }
-    });
-
-    for (let i = 0; i < headerSmallMenuLinks.length; i++) {
-      headerSmallMenuLinks[i].addEventListener("click", () => {
-        smallMenu.classList.remove("header__sm-menu--active");
-        headerHamMenuBtn.classList.remove("d-none");
-        headerHamMenuCloseBtn.classList.add("d-none");
-      });
-    }
-
-    // ---
-    const headerLogoConatiner = document.querySelector(
-      ".header__logo-container"
-    );
-
-    headerLogoConatiner.addEventListener("click", () => {
-      location.href = "index.html";
-    });
   },
 };
 </script>
