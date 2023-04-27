@@ -6,6 +6,7 @@ import Project from "../components/Project.vue";
 const routes = [
   { path: "/", component: Main },
   { path: "/project", component: Project },
+  { path: "/:catchAll(.*)", redirect: "/" },
 ];
 
 const router = createRouter({

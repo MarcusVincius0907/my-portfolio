@@ -15,7 +15,7 @@
         <ul class="header__links">
           <li class="header__link-wrapper">
             <a
-              v-for="(section, i) of sections"
+              v-for="(section, i) of menuItems"
               :key="i"
               @click="scrollToElement(section.name)"
               class="header__link"
@@ -43,7 +43,7 @@
         <ul class="header__sm-menu-links">
           <li class="header__sm-menu-link">
             <a
-              v-for="(section, i) of sections"
+              v-for="(section, i) of menuItems"
               :key="i"
               @click="scrollToElement(section.name)"
             >
@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import db from "../data";
 export default {
   name: "Header",
   setup() {
@@ -65,16 +66,9 @@ export default {
       anchor.scrollIntoView({ behavior: "smooth" });
     };
 
-    const sections = [
-      { name: "home", text: "HOME" },
-      { name: "about", text: "ABOUT" },
-      { name: "projects", text: "PROJECTS" },
-      { name: "contact", text: "CONTACT" },
-    ];
-
     return {
       scrollToElement,
-      sections,
+      menuItems: db.menuItems,
     };
   },
 
@@ -119,7 +113,7 @@ export default {
     );
 
     headerLogoConatiner.addEventListener("click", () => {
-      location.href = "/";
+      this.$router.push({ path: "/" });
     });
   },
 };

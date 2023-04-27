@@ -1,5 +1,4 @@
 <template>
-  <Header></Header>
   <section class="home-hero" name="home">
     <div class="home-hero__content">
       <h1 class="heading-primary">Hey, My name is Marcus</h1>
@@ -191,131 +190,25 @@
       </div>
     </div>
   </section>
-  <Footer :socials="socials" :goToLink="goToLink"> </Footer>
 </template>
 
 <script>
 import { useRouter } from "vue-router";
-import Header from "./Header.vue";
-import Footer from "./Footer.vue";
+import db from "../data";
 export default {
   name: "main",
-  components: {
-    Header,
-    Footer,
-  },
   setup() {
     const router = useRouter();
-
-    const skills = [
-      "Angular",
-      "Vue.js",
-      "React.js",
-      "Typescript",
-      "SASS",
-      "BEM",
-      "Tailwindcss",
-      "Ngrx",
-      "Vuex",
-      "Redux",
-      "Rxjs",
-      "ExpressJs",
-      "MongoDB",
-      "Docker",
-      ".NET",
-      "SQL Server",
-      "PHP",
-      "Laravel",
-      "MySQL",
-      "AWS",
-    ];
-
-    const socials = [
-      {
-        icon: "fa-brands fa-linkedin-in",
-        link: "https://www.linkedin.com/in/marcus-leite-ab751417b/",
-      },
-      {
-        icon: "fa-brands fa-github",
-        link: "https://github.com/MarcusVincius0907",
-      },
-      {
-        icon: "fa-solid fa-envelope",
-        link: "mvleite0908@gmail.com",
-        isEmail: true,
-      },
-      {
-        icon: "fa-brands fa-whatsapp",
-        link: "https://wa.me/5511958755705",
-      },
-    ];
-
-    const projects = [
-      {
-        id: 0,
-        title: "Caroci Academy",
-        description: "A Health LMS plaftform delevop with Laravel",
-        path: "caroci",
-        thumb: "",
-      },
-      {
-        id: 1,
-        title: "Pixel",
-        description:
-          "A sortition platform & API. Build with Vue.js and Express",
-        path: "pixel",
-        thumb: "",
-      },
-      {
-        id: 2,
-        title: "Imagem e Ação",
-        description:
-          "A Simple Charades Game to play with friends. Build with React and Express",
-        path: "charades",
-        thumb: "",
-      },
-      {
-        id: 3,
-        title: "Brisa",
-        description: "Professional experience sum",
-        path: "brisa",
-        thumb: "",
-      },
-      {
-        id: 4,
-        title: "Solutis",
-        description: "Professional experience sum",
-        path: "solutis",
-        thumb: "",
-      },
-      {
-        id: 5,
-        title: "Netcracker",
-        description: "Professional experience sum",
-        path: "netcrecker",
-        thumb: "",
-      },
-    ];
-
-    const goToLink = (link, isEmail = false) => {
-      if (isEmail) {
-        let mailToLink = `mailto:${link}`;
-        window.location.href = mailToLink;
-        return;
-      }
-
-      window.open(link, "_blank");
-    };
 
     const goToProject = (project) => {
       router.push({ name: "project" });
     };
 
     return {
-      skills,
-      socials,
-      projects,
-      goToLink,
+      skills: db.skills,
+      socials: db.socials,
+      projects: db.projects,
+      goToLink: db.goToLink,
       goToProject,
     };
   },
