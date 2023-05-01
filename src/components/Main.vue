@@ -201,7 +201,7 @@ export default {
     const router = useRouter();
 
     const goToProject = (project) => {
-      router.push({ name: "project" });
+      router.push(`/project/${project.id}`);
     };
 
     return {
