@@ -12,7 +12,7 @@ app.get("/*", (req, res) => {
   res.sendFile(__dirname + "/dist/index.html");
 });
 
-const frontPort = process.env.FRONT_PORT || 8080;
+const frontPort = 8081;
 app.listen(frontPort, () => {
   console.log(`Server listening on http://localhost:${frontPort}`);
 });
