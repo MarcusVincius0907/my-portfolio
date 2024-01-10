@@ -19,6 +19,12 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project (if needed)
+        run: npm run build
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
@@ -29,6 +35,4 @@ jobs:
           script: |
             cd /home/projects/my-portfolio
             git pull origin main
-            npm install
-            npm run build
             pm2 restart portfolio
