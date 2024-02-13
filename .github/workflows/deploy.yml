@@ -35,4 +35,5 @@ jobs:
           script: |
             cd /home/projects/my-portfolio
             git pull origin main
-            pm2 restart portfolio
+            docker-compose down
+            docker-compose up --build -d
