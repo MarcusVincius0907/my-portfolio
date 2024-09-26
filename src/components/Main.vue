@@ -68,8 +68,8 @@
             <p class="about__content-details-para">
               Hey! My name is <strong>Marcus Vinicius Leite </strong>, and I
               currently reside in <strong> São Paulo, Brazil</strong>. At
-              <strong> 21 years old </strong>, I am an avid sports enthusiast
-              with a passion for <strong> football </strong>, cycling, running,
+              <strong> 23 years old </strong>, I am an avid sports enthusiast
+              with a passion for <strong> soccer </strong>, cycling, running,
               and ping pong. In my free time, I enjoy delving into books on
               history and <strong> religion </strong>, as well as spending time
               with my loved ones.
