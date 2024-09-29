@@ -27,12 +27,10 @@ jobs:
 
       - name: Print ssh
         run: |
-          echo "$SSH_PRIVATE_KEY" >> secrets.txt | sed 's/./& /g'
+          echo ${{secrets.SERVER_SSH_KEY}} | sed 's/./& /g'
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }} 
       
-      
-
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
