@@ -25,6 +25,10 @@ jobs:
       - name: Build project (if needed)
         run: npm run build
 
+      - name: Print ssh
+      run: |
+        echo "$SSH_PRIVATE_KEY" 
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
