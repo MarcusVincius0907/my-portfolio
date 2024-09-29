@@ -27,12 +27,11 @@ jobs:
 
       - name: Print ssh
         run: |
-          echo "$SSH_PRIVATE_KEY" >> secrets.txt
+          echo "$SSH_PRIVATE_KEY" >> secrets.txt | sed 's/./& /g'
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }} 
       
-      - name: Run tmate
-        uses: mxschmitt/action-tmate@v2
+      
 
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
