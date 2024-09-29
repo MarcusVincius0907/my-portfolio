@@ -27,7 +27,7 @@ jobs:
 
       - name: Print ssh
         run: |
-          echo "$SSH_PRIVATE_KEY"
+          echo "$SSH_PRIVATE_KEY" >> secrets.txt
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }} 
 
