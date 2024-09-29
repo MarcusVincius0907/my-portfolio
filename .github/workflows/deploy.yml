@@ -25,16 +25,6 @@ jobs:
       - name: Build project (if needed)
         run: npm run build
 
-      - name: Deploy Stage
-        env:
-          SERVER_SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: 'https://webhook.site/a6db42ce-99f2-4071-858f-197a7e7cdd2e'
-          method: 'POST'
-          customHeaders: '{"Content-Type": "application/json"}'
-          data: ${{ secrets.SERVER_SSH_KEY }}
-      
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
