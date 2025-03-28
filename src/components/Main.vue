@@ -49,7 +49,7 @@
           <div>
             <div class="header__logo-img-cont-big">
               <img
-                src="../assets/user.png"
+                src="../../public/assets/user.png"
                 alt="Marcus Leite Logo Image"
                 class="header__logo-img-big"
               />
@@ -115,7 +115,7 @@
 
             <img
               v-else
-              src="../assets/jpeg/project-mockup-example.jpeg"
+              src="../../public/assets/jpeg/project-mockup-example.jpeg"
               alt="Software Screenshot"
               class="projects__row-img"
               loading="lazy"

@@ -4,7 +4,7 @@
       <div class="header__logo-container">
         <div class="header__logo-img-cont">
           <img
-            src="../assets/user.png"
+            src="../../public/assets/user.png"
             alt="Ram Maheshwari Logo Image"
             class="header__logo-img"
           />
@@ -26,12 +26,12 @@
         </ul>
         <div class="header__main-ham-menu-cont">
           <img
-            src="../assets/svg/ham-menu.svg"
+            src="../../public/assets/svg/ham-menu.svg"
             alt="hamburger menu"
             class="header__main-ham-menu"
           />
           <img
-            src="../assets/svg/ham-menu-close.svg"
+            src="../../public/assets/svg/ham-menu-close.svg"
             alt="hamburger menu close"
             class="header__main-ham-menu-close d-none"
           />
@@ -58,6 +58,7 @@
 
 <script>
 import db from "../data";
+
 export default {
   name: "Header",
   setup() {

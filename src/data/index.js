@@ -85,7 +85,7 @@ const db = {
       description: "A Health LMS plaftform delevop with Laravel",
       overview: carociOverview,
       path: "caroci",
-      thumb: "/src/assets/projects/caroci.png",
+      thumb: "assets/projects/caroci.png",
       liveLink: "https://academy.caroci.com.br/",
       codeLink: "",
       toolsUsed: ["PHP", "Laravel", "MySQL", "Javascript"],
@@ -96,7 +96,7 @@ const db = {
       description: "A sortition platform & API. Build with Vue.js and Express",
       overview: pixelOverview,
       path: "pixel",
-      thumb: "/src/assets/projects/l2m.png",
+      thumb: "assets/projects/l2m.png",
       liveLink: "https://pixel-landing.marcusleitedev.com",
       codeLink: "",
       toolsUsed: [
@@ -116,7 +116,7 @@ const db = {
         "A Simple Charades Game to play with friends. Build with React and Express",
       overview: charadesOverview,
       path: "charades",
-      thumb: "/src/assets/projects/imagem-e-acao.png",
+      thumb: "assets/projects/imagem-e-acao.png",
       liveLink: "https://imagem-e-acao.marcusleitedev.com/",
       codeLink: "https://github.com/MarcusVincius0907/ImagemAcaoGame-backend",
       toolsUsed: [
@@ -134,7 +134,7 @@ const db = {
       description: "Professional experience summary in Brisa company",
       overview: brisaOverview,
       path: "brisa",
-      thumb: "/src/assets/projects/brisa.png",
+      thumb: "assets/projects/brisa.png",
       liveLink: "http://www.brisa.org.br/",
       codeLink: "",
       toolsUsed: [
@@ -160,7 +160,7 @@ const db = {
       description: "Professional experience summary in Solutis company",
       overview: solutisOverview,
       path: "solutis",
-      thumb: "/src/assets/projects/solutis.png",
+      thumb: "assets/projects/solutis.png",
       liveLink: "https://solutis.com.br/",
       codeLink: "",
       toolsUsed: [
@@ -180,7 +180,7 @@ const db = {
       description: "Professional experience summary in Netcracker company",
       overview: ncOverview,
       path: "netcrecker",
-      thumb: "/src/assets/projects/netcracker.png",
+      thumb: "assets/projects/netcracker.png",
       liveLink: "https://www.netcracker.com/",
       codeLink: "",
       toolsUsed: ["Angular", "NgRx", "Rxjs", "BEM pattern", "Vue.js", "Vuex"],

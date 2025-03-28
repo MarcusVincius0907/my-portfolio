@@ -20,7 +20,7 @@
         <div class="project-details__content">
           <div class="project-details__showcase-img-cont">
             <img
-              src="../assets/jpeg/project-mockup-example.jpeg"
+              src="../../public/assets/jpeg/project-mockup-example.jpeg"
               alt="Project Image"
               class="project-details__showcase-img"
             />
